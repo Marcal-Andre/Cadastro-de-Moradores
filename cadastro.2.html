@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Moradores e Visitantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Cadastro de Moradores e Visitantes</h2>
+
+<div class="form-group">
+    <label for="nome">Nome do Visitante:</label>
+    <input type="text" id="nome">
+</div>
+<div class="form-group">
+    <label for="tipo">(Apto e Bloco):</label>
+    <input type="text" id="tipo">
+</div>
+<div class="form-group">
+    <label for="carro">Carro:</label>
+    <input type="text" id="carro">
+</div>
+<button onclick="cadastrar()">Cadastrar</button>
+
+<h2>Cadastros:</h2>
+<ul id="cadastros">
+</ul>
+
+<script>
+    var cadastros = [];
+
+    function cadastrar() {
+        var nome = document.getElementById('nome').value;
+        var tipo = document.getElementById('tipo').value;
+        var carro = document.getElementById('carro').value;
+
+        var cadastro = {
+            nome: nome,
+            tipo: tipo,
+            carro: carro
+        };
+
+        cadastros.push(cadastro);
+
+        document.getElementById('nome').value = '';
+        document.getElementById('tipo').value = '';
+        document.getElementById('carro').value = '';
+
+        exibirCadastros();
+    }
+
+    function exibirCadastros() {
+        var lista = document.getElementById('cadastros');
+        lista.innerHTML = '';
+
+        for (var i = 0; i < cadastros.length; i++) {
+            lista.innerHTML += '<li>' + cadastros[i].nome + ' - ' + cadastros[i].tipo + ' - ' + cadastros[i].carro + '</li>';
+        }
+    }
+</script>
+
+</body>
+</html>
